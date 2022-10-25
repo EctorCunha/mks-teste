@@ -1,12 +1,10 @@
 import Image from "next/image";
 import cart from "../../assets/cart.svg";
-import { Wrapper, Logo, Mks, Span, CartDiv, Quantity } from "./header";
+import { Wrapper, Logo, Mks, Span, CartDiv, Quantity } from "../../styles/compontents/header";
 
-type Props = {
-  children: React.ReactNode;
-};
 
-export default function Header(props: Props) {
+
+export default function Header() {
   return (
     <Wrapper>
       <Logo>
