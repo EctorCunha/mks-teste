@@ -37,6 +37,7 @@ export const CartDiv = styled.div`
   border-radius: 8px;
   margin: 1.813rem 5.5rem 1.688rem 0;
   background: var(--tertiary-color);
+  cursor: pointer;
 `;
 
 export const Quantity = styled.span`

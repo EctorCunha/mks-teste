@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   height: 3.433vh;
   border-radius: 0px 0px 8px 8px;
   gap: 1rem;
+  cursor: pointer;
 `;
 
 export const Span = styled.span`
