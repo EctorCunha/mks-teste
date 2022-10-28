@@ -5,7 +5,7 @@ import bag from "../../assets/shopping-bag.svg";
 import Image from "next/image";
 
 
-export default function Button(id:number) {
+export default function Button() {
   const dispatch = useDispatch();
 
 
