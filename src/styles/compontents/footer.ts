@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 
-export const Copy = styled.div`
+export const Copy = styled.footer`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     height: 3.66vh;
     background-color: var(--quaternary-color);
 `;

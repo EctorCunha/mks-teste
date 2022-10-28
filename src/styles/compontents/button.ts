@@ -10,10 +10,14 @@ export const Wrapper = styled.div`
   border-radius: 0px 0px 8px 8px;
   gap: 1rem;
   cursor: pointer;
+  :hover {
+    opacity: 0.8;
+    transition: 0.3s ease-in-out;
+  }
 `;
 
 export const Span = styled.span`
   /* font-weight: 600; */
-  font-size: .875rem;
+  font-size: 0.875rem;
   color: var(--tertiary-color);
 `;

@@ -10,7 +10,7 @@ export type Props = {
 
 export default function Home(props: Props) {
   return (
-    <div>
+    <>
       <Head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,6 +28,6 @@ export default function Home(props: Props) {
       <Store />
       <Cart />
       <Footer />
-    </div>
+    </>
   );
 }

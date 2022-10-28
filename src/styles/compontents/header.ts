@@ -5,10 +5,11 @@ export const Wrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 10.87vh;
   background-color: var(--secondary-color);
   color: var(--tertiary-color);
+ 
 `;
 
 export const Logo = styled.div`
@@ -32,12 +33,20 @@ export const CartDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 4.68vw;
+  width: 6vw;
   height: 4.84vh;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   margin: 1.813rem 5.5rem 1.688rem 0;
   background: var(--tertiary-color);
   cursor: pointer;
+
+  @media (max-width: 1024px) {
+    width: 10vw;
+  }
+
+  @media (max-width: 480px) {
+    width: 15vw;
+  }
 `;
 
 export const Quantity = styled.span`
