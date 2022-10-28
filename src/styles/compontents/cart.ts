@@ -196,6 +196,7 @@ export const Finish = styled.div`
   color: var(--tertiary-color);
   font-weight: 700;
   font-size: 1.75rem;
+  cursor: pointer;
 `;
 
 export const Purchase = styled.p`

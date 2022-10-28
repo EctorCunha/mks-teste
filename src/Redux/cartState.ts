@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useEffect } from "react";
-import { api } from "../services/api";
+// import { useEffect } from "react";
+// import { api } from "../services/api";
 
 interface IProducts {
   id: Number;
@@ -11,11 +11,12 @@ interface IProducts {
   price: Number;
 }
 
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
     isOpen: false,
-    // cartItems: <IProducts>{},
+    // cartItems: [],
     value: 0,
     loading: true,
   },
@@ -38,25 +39,43 @@ export const cartSlice = createSlice({
     setLoading: (state) => {
       state.loading = false;
     },
-    // setData: (state) => {
-    //   async function getData() {
-    //     try {
-    //       const response = await api.get(
-    //         "/products?page=1&rows=8&sortBy=id&orderBy=ASC"
-    //       );
-    //       state.cartItems = response.data.products;
-    //       console.log(state.cartItems);
-    //     } catch {
-    //       console.error("Erro ao buscar produto", "error");
+    // setCharacters: (state, action) => {
+    //   if (action.payload.info) {
+    //     state.cartItems = action.payload;
+    //   } else if (action.payload.id) {
+    //     state.cartItems = {
+    //       results: [action.payload]
+    //     };
+    //   } else if (action.payload instanceof Array) {
+    //     state.cartItems = {
+    //       results: action.payload
+    //     };
+    //   } else {
+    //     state.cartItems = {};
+    //   }
+    // },
+
+    // addToCart: (state, action, id) => {
+    //   state.cartItems = [...state.cartItems, action.payload];
+
+    //     const item = state.cartItems.find((product) => product.id === id);
+
+    //     if(item) {
+    //       item.quantity += 1;
+    //       state.cartItems(item);
+    //     } else {
+    //       state.cartItems(currentProducts => [...currentProducts]);
+    //     }
+
+    //     if (!item) {
+    //       state.cartItems.push({ id, quantity: 1 });
+    //     } else {
+    //       item.quantity += 1;
     //     }
     //   }
-
-    //   useEffect(() => {
-    //     getData();
-    //   }, []);
-    // },
+    },
   },
-});
+);
 
 export const { increment, decrement, cartIsOpen, cartIsClose, setLoading } =
   cartSlice.actions;

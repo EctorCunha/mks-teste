@@ -57,27 +57,25 @@ export default function Card() {
     getData();
   }, []);
 
-
   // precisa passar essa função para o carrinho
-  function addProductToCart(id: Number, props:IProducts) {
-    const copyProducts = [...products];
+  // function addProductToCart(id: Number, props:IProducts) {
+  //   const copyProducts = [...products];
 
-    const item = copyProducts.find((product) => product.id === id);
+  //   const item = copyProducts.find((product) => product.id === id);
 
-    if(item) {
-      item.quantity += 1;
-      setProducts(copyProducts);
-    } else {
-      setProducts(currentProducts => [...currentProducts, props]);
-    }
+  //   if(item) {
+  //     item.quantity += 1;
+  //     setProducts(copyProducts);
+  //   } else {
+  //     setProducts(currentProducts => [...currentProducts, props]);
+  //   }
 
-
-    // if (!item) {
-    //   copyProducts.push({ id: id, quantity: 1 });
-    // } else {
-    //   item.quantity += 1;
-    // }
-  }
+  //   // if (!item) {
+  //   //   copyProducts.push({ id: id, quantity: 1 });
+  //   // } else {
+  //   //   item.quantity += 1;
+  //   // }
+  // }
 
   return (
     <Wrapper>
