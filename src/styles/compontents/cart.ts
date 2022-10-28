@@ -162,11 +162,14 @@ position: relative;
   position: absolute;
   width: 1.125rem;
   height: 1.125rem;
-  margin: -3.5rem -11.5rem 3rem 6rem;
+  margin: -3rem -14rem 3rem 9.5rem;
   border-radius: 50%;
   font-size: var(1rem, 1vw);
   background-color: #000000;
   color: var(--tertiary-color);
+  @media (max-width: 1440px) {
+   margin: -3.5rem -11.5rem 3rem 6rem;
+  }
   @media (max-width: 500px) {
     margin: -3.5rem -18.7rem 3rem 6rem;
   }
