@@ -1,21 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
-import cartState from "./cartState";
-// import createSagaMiddleware from 'redux-saga';
-// import rootSagas from "./rootSagas";
+import cartReducer from "./cartState";
+import createSagaMiddleware from 'redux-saga';
+import rootSagas from "./rootSagas";
 
-// const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
-    add: cartState,
+    add: cartReducer,
   },
-  // middleware: (getDefaultMiddleware) => [
-  //   ...getDefaultMiddleware({ thunk: false }),
-  //   sagaMiddleware
-  // ]
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware({ thunk: false }),
+    sagaMiddleware
+  ]
 });
 
-// sagaMiddleware.run(rootSagas);
+sagaMiddleware.run(rootSagas);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;

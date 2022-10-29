@@ -1,26 +1,26 @@
+import { call, put, takeEvery } from "redux-saga/effects";
+import { addProduct, addToCart, setData } from "./cartState";
 
-import { call, debounce, put } from 'redux-saga/effects';
-// import { addToCart } from './cartState';
+function* fetchData() {
+  const res = yield call(
+    fetch,
+    `https://mks-frontend-challenge-api.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC`)
 
+  const data = yield res.json();
 
+  yield put(setData(data.products));
 
+}
 
+// function* addCart(){
+//     const addToCart = ({id, quantity}:any) => ({type: 'cart/addToCart', payload: id, quantity: +1});
 
-// function* fetchCharacters(): any {
-
-//   let url = `https://mks-frontend-challenge-api.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC`;
-
-//   const res = yield call(fetch, url, {
-//     headers: { 'Content-Type': 'application/json' }
-//   });
-
-//   const data = yield res.data.products();
-
-//   yield put(addToCart(data));
+//     yield put(addProduct(addToCart))
 // }
 
 
 
-// export default function* rootSagas() {
-//   yield debounce(300, 'characters/fetchCharacters', fetchCharacters);
-// }
+export default function* rootSagas() {
+  yield takeEvery("cart/setData", fetchData);
+//   yield takeEvery("cart/addToCart", addCart);
+}

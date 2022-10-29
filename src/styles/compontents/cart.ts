@@ -167,8 +167,10 @@ position: relative;
   font-size: var(1rem, 1vw);
   background-color: #000000;
   color: var(--tertiary-color);
+  cursor: pointer;
+
   @media (max-width: 1440px) {
-   margin: -3.5rem -11.5rem 3rem 6rem;
+   margin: -2rem -11.5rem 3rem 6rem;
   }
   @media (max-width: 500px) {
     margin: -3.5rem -18.7rem 3rem 6rem;

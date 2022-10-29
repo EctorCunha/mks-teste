@@ -9,14 +9,15 @@ interface IProducts {
   description: String;
   photo: String;
   price: Number;
+  quantity: Number;
 }
-
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
     isOpen: false,
-    // cartItems: [],
+    listApi: [],
+    cartItems: [],
     value: 0,
     loading: true,
   },
@@ -39,44 +40,68 @@ export const cartSlice = createSlice({
     setLoading: (state) => {
       state.loading = false;
     },
-    // setCharacters: (state, action) => {
-    //   if (action.payload.info) {
-    //     state.cartItems = action.payload;
-    //   } else if (action.payload.id) {
-    //     state.cartItems = {
-    //       results: [action.payload]
-    //     };
-    //   } else if (action.payload instanceof Array) {
-    //     state.cartItems = {
-    //       results: action.payload
-    //     };
-    //   } else {
-    //     state.cartItems = {};
-    //   }
-    // },
-
-    // addToCart: (state, action, id) => {
-    //   state.cartItems = [...state.cartItems, action.payload];
-
-    //     const item = state.cartItems.find((product) => product.id === id);
-
-    //     if(item) {
-    //       item.quantity += 1;
-    //       state.cartItems(item);
-    //     } else {
-    //       state.cartItems(currentProducts => [...currentProducts]);
-    //     }
-
-    //     if (!item) {
-    //       state.cartItems.push({ id, quantity: 1 });
-    //     } else {
-    //       item.quantity += 1;
-    //     }
-    //   }
+    setData: (state, action) => {
+      state.listApi = action.payload;
     },
-  },
-);
+    addProduct: (state, action) => {
+      const copyCartItems = [...state.cartItems];
+      const product = copyCartItems.find(
+        (item) => item.id === action.payload.id
+      );
+      if (!product) {
+        copyCartItems.push({ ...action.payload, quantity: 1 });
+      } else {
+        product.quantity += 1;
+      }
+      state.cartItems = copyCartItems;
 
-export const { increment, decrement, cartIsOpen, cartIsClose, setLoading } =
-  cartSlice.actions;
+      // state.cartItems.push(action.payload)
+
+      // state.cartItems = state.cartItems.find( item => item.id === action.payload.id)
+      // if(!state.cartItems){
+      //   state.cartItems.push(action.payload)
+      // } else {
+      //   state.cartItems = state.cartItems
+      // }
+    },
+    removeProducts: (state, action) => {
+      const copyCartItems = [...state.cartItems];
+      const product = copyCartItems.find(
+        (item) => item.id === action.payload.id
+      );
+      if (!product) {
+        copyCartItems.push({ ...action.payload, quantity: 1 });
+      } else {
+        product.quantity += 1;
+      }
+      state.cartItems = copyCartItems;
+
+
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== action.payload
+      );
+    },
+    removeCartProducts: (state) => {
+      state.cartItems = [];
+    }
+  },
+});
+
+// export const selectedProductsToCart = (state:any) => state.cart.cartItems;
+
+export const addToCart = ({ id, quantity }: IProducts) => ({
+  type: "cart/addToCart",
+  payload: id,
+  quantity: +1,
+});
+
+export const {
+  increment,
+  decrement,
+  cartIsOpen,
+  cartIsClose,
+  setLoading,
+  setData,
+  addProduct, removeProducts, removeCartProducts
+} = cartSlice.actions;
 export default cartSlice.reducer;

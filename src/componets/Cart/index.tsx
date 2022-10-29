@@ -18,14 +18,16 @@ import {
   Purchase,
 } from "../../styles/compontents/cart";
 import { useSelector, useDispatch } from "react-redux";
-import { cartIsClose, increment, decrement } from "../../Redux/cartState";
+import { cartIsClose, increment, decrement, removeCartProducts } from "../../Redux/cartState";
 
 export default function Cart() {
   const cart = useSelector((state: any) => state.add.isOpen);
   const addRender = useSelector((state: any) => state.add.value);
+  const addProducts = useSelector((state: any) => state.add.cartItems);
   const dispatch = useDispatch();
 
-  
+  console.log(addProducts);
+
   return (
     <>
       {cart ? (
@@ -37,24 +39,28 @@ export default function Cart() {
             </DivTitle>
 
             <Products>
-              <Product>
-                <img
-                  src={"https://img.freepik.com/fotos-gratis/3d-rendem-de-uma-mesa-de-madeira-com-uma-imagem-defocussed-de-um-barco-em-um-lago_1048-3432.jpg?w=2000"}
-                  alt="Produto escolhido"
-                  style={{ width: "50px", height: "50px" }}
-                />
-                <Name>Apple watch Series 4 GPS</Name>
-                <QntProducts>
-                  <Qnt>Qnt:</Qnt>
-                  <Buttons>
-                    <button onClick={() => dispatch(decrement())}>-</button>
-                    <span>{addRender}</span>
-                    <button onClick={() => dispatch(increment())}>+</button>
-                  </Buttons>
-                </QntProducts>
-                <CartPrice>R$ 399</CartPrice>
-                <CartClose>x</CartClose>
-              </Product>
+              {addProducts.map((product: any) => {
+                return (
+                  <Product key={product.id}>
+                    <img
+                      src={product.photo}
+                      alt={Products.name}
+                      style={{ width: "50px", height: "50px" }}
+                    />
+                    <Name>{product.name}</Name>
+                    <QntProducts>
+                      <Qnt>Qnt:</Qnt>
+                      <Buttons>
+                        <button onClick={() => dispatch(decrement())}>-</button>
+                        <span>{addRender}</span>
+                        <button onClick={() => dispatch(increment())}>+</button>
+                      </Buttons>
+                    </QntProducts>
+                    <CartPrice>{product.price}</CartPrice>
+                    <CartClose onClick={()=> dispatch(removeCartProducts())} >x</CartClose>
+                  </Product>
+                );
+              })}
             </Products>
 
             <Total>
